@@ -25,6 +25,7 @@ urlpatterns = [
     path('members/', include('members.urls')),
     path('', include('social_django.urls', namespace='social')),
     path('admin/', admin.site.urls),
+    path('shows/', include('shows.urls')),
 ]
 
 urlpatterns += static(
