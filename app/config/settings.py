@@ -24,7 +24,8 @@ STATICFILES_DIRS = [
 ]
 
 # Login
-LOGIN_URL = ''
+LOGIN_URL = 'members:login'
+LOGIN_REDIRECT_URL = 'members:login'
 
 # STATIC
 STATIC_URL = '/static/'
@@ -35,6 +36,8 @@ secrets = json.load(open(os.path.join(SECRET_DIR, 'base.json')))
 SECRET_KEY = secrets['SECRET_KEY']
 FACEBOOK_APP_ID = secrets['FACEBOOK_APP_ID']
 FACEBOOK_APP_SECRET = secrets['FACEBOOK_APP_SECRET']
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = secrets['SOCIAL_AUTH_GOOGLE_OAUTH2_KEY']
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = secrets['SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET']
 
 DEBUG = True
 

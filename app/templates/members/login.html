@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-<p>test</p>
+    <a class="btn btn-lg btn-primary btn-block" href="{% url 'social:begin' 'facebook' %}">Facebook으로 로그인</a>
+    <a class="btn btn-lg btn-primary btn-block" href="{% url 'social:begin' 'google-oauth2' %}">Google로 로그인</a>
 {% endblock %}
