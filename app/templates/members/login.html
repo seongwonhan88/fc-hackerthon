@@ -2,4 +2,10 @@
 {% block content %}
     <a class="btn btn-lg btn-primary btn-block" href="{% url 'social:begin' 'facebook' %}">Facebook으로 로그인</a>
     <a class="btn btn-lg btn-primary btn-block" href="{% url 'social:begin' 'google-oauth2' %}">Google로 로그인</a>
+    <div
+            class="fb-like"
+            data-share="true"
+            data-width="450"
+            data-show-faces="true">
+    </div>
 {% endblock %}
