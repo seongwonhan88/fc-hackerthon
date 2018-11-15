@@ -1,0 +1,28 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>전시관이 살아있다</title>
+</head>
+<body>
+<div id="wrap">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a href="" class="navbar-brand">전시관이 살아있다</a>
+        <ul class="navbar-nav ml-md-auto">
+                <li class="nav-item mr-sm-1">
+                    <a href="" class="btn btn-outline-primary">로그인</a>
+                </li>
+                <li class="nav-item mr-sm-1">
+                    <a href="" class="btn btn-outline-primary">회원가입</a>
+                </li>
+        </ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>
