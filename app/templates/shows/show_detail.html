@@ -19,5 +19,15 @@
     {% for comment in comments %}
         <p>{{ comment.author }}: {{ comment.content }}</p>
     {% endfor %}
+    <!--댓글 작성-->
+    {% if user.is_authenticated %}
+    <form action="{% url 'shows:comment_create' post_pk=show.pk %}" method="POST">
+        {% csrf_token %}
+        {{ comment_form.content }}
+        <textarea name="content" cols="30" rows="2" class="form-control"></textarea>
+        <button type="submit" class="btn btn-primary">작성</button>
+    </form>
+    {% endif %}
+
 </div>
 {% endblock %}
