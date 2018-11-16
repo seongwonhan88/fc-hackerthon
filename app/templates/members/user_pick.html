@@ -2,6 +2,9 @@
 
 {% block content %}
 <h2>사용자가 pick한 전시회 보여주기</h2>
+    {% for show in picked_shows %}
+        {{ show.data }}
+    {% endfor %}
 {% endblock %}
 
 

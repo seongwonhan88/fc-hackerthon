@@ -7,18 +7,49 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>전시관이 살아있다</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '546322495811516',
+                xfbml: true,
+                version: 'v3.2'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 </head>
 <body>
 <div id="wrap">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a href="" class="navbar-brand">전시관이 살아있다</a>
+        <a href="{% url 'shows:show-list' %}" class="navbar-brand">전시관이 살아있다</a>
         <ul class="navbar-nav ml-md-auto">
+            {% if user.is_authenticated %}
                 <li class="nav-item mr-sm-1">
-                    <a href="" class="btn btn-outline-primary">로그인</a>
+                    <form action="{% url 'members:logout-view' %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-primary">Logout</button>
+                    </form>
                 </li>
                 <li class="nav-item mr-sm-1">
-                    <a href="" class="btn btn-outline-primary">회원가입</a>
+                    <a href="{% url 'members:user-pick' %}" class="btn btn-outline-primary">내가 찜한 전시</a>
                 </li>
+            {% else %}
+                <li class="nav-item mr-sm-1">
+                    <a href="{% url 'members:login-view' %}">Login</a>
+                </li>
+            {% endif %}
         </ul>
     </nav>
     {% block content %}
