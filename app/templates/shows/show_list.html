@@ -2,16 +2,16 @@
 {% load static %}
 {% block content %}
     <div>
-        <h2>전체 전시회 목록 보기</h2>
-    <div class="row">
-        {% for show in shows %}
+        <h2 >전체 전시회 목록 보기</h2>
+        <div class="row">
+            {% for show in shows %}
 
                 <div class="col-4">
                     <div class="card">
                         <img class="card-img-top" src="{{ show.thumbnail.url }}">
                         <div class="card-body">
                             <div class="card-title">
-                                <a href="{% url 'shows:show-detail' show_pk=show.pk %}" style="color: black;">
+                                <a href="{% url 'shows:show-detail' show_pk=show.pk %}">
                                     <h5 class="card-title">{{ show.title }}</h5>
                                 </a>
                             </div>
@@ -21,12 +21,12 @@
                             </ul>
                         </div>
                         <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
+                            <a href="{% url 'shows:show-detail' show_pk=show.pk %}" class="card-link">자세한 내용보기</a>
                         </div>
                     </div>
                 </div>
 
-        {% endfor %}
-</div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
