@@ -3,15 +3,11 @@
 {% block content %}
     <div class="col col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2">
         <h2 class="text-center">로그인</h2>
-    <a class="btn btn-lg btn-primary btn-block" href="{% url 'social:begin' 'facebook' %}">Facebook으로 로그인</a>
-    <a class="btn btn-lg btn-primary btn-block" href="{% url 'social:begin' 'google-oauth2' %}">Google로 로그인</a>
-    </div>
-
-
-    <div
-            class="fb-like"
-            data-share="true"
-            data-width="450"
-            data-show-faces="true">
+        <a class="btn btn-outline btn-block" href="{% url 'social:begin' 'facebook' %}">
+            <i class="fab fa-facebook"></i>
+            Facebook으로 로그인</a>
+        <a class="btn btn-outline btn-block" href="{% url 'social:begin' 'google-oauth2' %}">
+            <i class="fab fa-google"></i>
+            Google로 로그인</a>
     </div>
 {% endblock %}
