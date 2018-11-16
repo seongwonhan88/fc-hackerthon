@@ -1,7 +1,7 @@
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 
-from shows.models import Show, ShowPick
+from shows.models import Show
 
 
 def login_view(request):
@@ -20,6 +20,6 @@ def logout_view(request):
 def user_pick(request):
     shows = Show.objects.filter(showpick__user=request.user)
     context = {
-        "shows":shows,
+        "shows": shows,
     }
     return render(request, 'members/user_pick.html', context)
