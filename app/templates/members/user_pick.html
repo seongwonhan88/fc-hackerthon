@@ -6,6 +6,7 @@
         {{ show.title }}
         <img src="{{ show.poster.url }}" alt="">
         {{ show.price }}
+        <a href="{% url 'shows:show-detail'  show.pk  %}">전시 보러가기</a>
     {% endfor %}
 {% endblock %}
 
