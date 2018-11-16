@@ -59,3 +59,19 @@ def show_pick_toggle(request,show_pk):
             'comments': comments,
         }
         return render(request, 'shows/show_detail.html', content)
+
+
+def search_list(request, keyword):
+    shows = Show.objects.filter(title__contains=keyword)
+    context = {
+        'keyword': keyword,
+        'shows': shows,
+    }
+    return render(request, 'shows/search_show_list.html', context)
+
+
+def keyword_search(request):
+    # request.GET으로 전달된 search_keyword값을
+    # 위의  tag_post_list view로 redirect
+    search_keyword = request.GET.get('search_keyword')
+    return redirect('shows:search_list', search_keyword)

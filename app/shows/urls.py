@@ -10,4 +10,6 @@ urlpatterns = [
     path('show_rating/<int:rating_score>/', views.show_rating, name='show-rating'),
     path('<int:show_pk>/comment/create', views.comment_create, name='comment_create'),
     path('<int:show_pk>/pick_toggle/', views.show_pick_toggle, name='show_pick_toggle'),
+    path('search_list/<str:keyword>/', views.search_list, name='search_list'),
+    path('search/', views.keyword_search, name='keyword-search'),
 ]
