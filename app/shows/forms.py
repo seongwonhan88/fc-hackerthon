@@ -6,7 +6,7 @@ from .models import Comment, Rating
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields =['content']
+        fields = ['content']
         widgets = {
             'content': forms.Textarea(
                 attrs={
@@ -20,4 +20,4 @@ class CommentForm(forms.ModelForm):
 class RatingForm(forms.ModelForm):
     class Meta:
         model = Rating
-        field = ['score']
+        fields = ['score']
