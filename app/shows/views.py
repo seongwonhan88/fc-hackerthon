@@ -46,3 +46,16 @@ def comment_create(request, post_pk):
                 'comments': comments,
             }
             return render(request, 'shows/show_detail.html', content)
+
+
+def show_pick_toggle(request,show_pk):
+
+    if request.method == 'POST':
+        show = get_object_or_404(Show, pk=show_pk)
+        show.pick_toggle(request.user)
+        comments = show.comments.all()
+        content = {
+            'show': show,
+            'comments': comments,
+        }
+        return render(request, 'shows/show_detail.html', content)
