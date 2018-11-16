@@ -2,7 +2,26 @@
 {% load static %}
 {% block content %}
 <div>
-    <h2>{{ show.title }}</h2>
+    <div class="container">
+        <div class="row">
+            <h2>{{ show.title }}</h2>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="{{ show.thumbnail.url }}" >
+            </div>
+            <div class="col">
+                <h3>장소</h3>
+                <p>{{ show.place }}</p>
+                <h3>기간</h3>
+                <p>{{ show.period }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <img src="{{ show.poster.url }}" >
+        </div>
+    </div>
+
     <h4>Thumnail</h4>
     <img src="{{ show.thumbnail.url }}" >
     <h3>장소</h3>
