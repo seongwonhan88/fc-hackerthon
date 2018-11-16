@@ -13,6 +13,7 @@ class Show(models.Model):
     description = models.TextField('상세설명', blank=True, null=True)
     price = models.PositiveIntegerField('가격', default=0)
     created_at = models.DateTimeField('작성일자', auto_now_add=True)
+    web_link = models.URLField('웹주소', max_length=200, blank=True, null=True)
 
     def __str__(self):
         return self.title
