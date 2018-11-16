@@ -3,14 +3,29 @@
 {% block content %}
 <div>
     <h2>전체 전시회 목록 보기</h2>
-    <ul>
-    {% for show in shows %}
-    <li>
-        <img src="{{ show.thumbnail.url }}" >
-        <p>{{ show.title }} {{ show.place }} {{ show.period }}</p>
-    </li>
-
-    {% endfor %}
+    <ul class="list-group list-group-flush">
+        {% for show in shows %}
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">
+                    <a href="{% url 'shows:show-detail' show_pk=show.pk %}">
+                        <img src="{{ show.thumbnail.url }}" style="width: 70px;">
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="{% url 'shows:show-detail' show_pk=show.pk %}" style="color: black;">
+                        <strong>{{ show.title }}</strong>
+                    </a>
+                </div>
+                <div class="col">
+                    {{ show.place }}
+                </div>
+                <div class="col">
+                    {{ show.period }}
+                </div>
+            </div>
+        </li>
+        {% endfor %}
     </ul>
 </div>
 
