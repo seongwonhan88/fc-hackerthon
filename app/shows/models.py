@@ -29,6 +29,13 @@ class Show(models.Model):
         if not showpick_created:
             showpick.delete()
 
+    pick_users = models.ManyToManyField(
+        User,
+        through='ShowPick',
+        related_name='pick_shows',
+        related_query_name='pick_show',
+    )
+
 
 class Comment(models.Model):
     show = models.ForeignKey(
