@@ -8,7 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>전시관이 살아있다</title>
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script>
         window.fbAsyncInit = function () {
             FB.init({
@@ -37,32 +38,33 @@
         <a href="{% url 'shows:show-list' %}" class="navbar-brand">
             <i class="far fa-thumbs-up"></i>
             전시관이 살아있다</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-3" type="search" placeholder="관심있는 내용을 검색해봐요" aria-label="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">검색</button>
         </form>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-md-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                    <a class="btn btn-outline-light my-2 mr-sm-0" href="#">Home<span
+                            class="sr-only">(current)</span></a>
                 </li>
                 {% if user.is_authenticated %}
                     <li class="nav-item active">
-                        <form action="{% url 'members:logout-view' %}" method="POST">
-                            {% csrf_token %}
-                            <button type="submit" class="nav-link active">Logout</button>
-                        </form>
+                        <a href="{% url 'members:user-pick' %}" class="btn btn-outline-light my-2 mr-sm-0">내가 찜한 전시</a>
                     </li>
                     <li class="nav-item active">
-                        <a href="{% url 'members:user-pick' %}" class="nav-link active">내가 찜한 전시</a>
+                        <form action="{% url 'members:logout-view' %}" method="POST" class="form-inline my-2 my-lg-0">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-light my-2 mr-sm-0">로그아웃</button>
+                        </form>
                     </li>
                 {% else %}
                     <li class="nav-item active">
-                        <a href="{% url 'members:login-view' %}" class="nav-link active">로그인</a>
+                        <a href="{% url 'members:login-view' %}" class="btn btn-outline-light my-2 mr-sm-0">로그인</a>
                     </li>
                 {% endif %}
             </ul>
