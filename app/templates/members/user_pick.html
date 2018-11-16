@@ -2,8 +2,10 @@
 
 {% block content %}
 <h2>사용자가 pick한 전시회 보여주기</h2>
-    {% for show in picked_shows %}
-        {{ show.data }}
+    {% for show in shows %}
+        {{ show.title }}
+        <img src="{{ show.poster.url }}" alt="">
+        {{ show.price }}
     {% endfor %}
 {% endblock %}
 

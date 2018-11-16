@@ -18,5 +18,8 @@ def logout_view(request):
 
 # 사용자가 찜한 목록 보기
 def user_pick(request):
-    picked_shows = ShowPick.objects.filter(user=request.user)
-    return render(request, 'members/user_pick.html', {"picked_shows":picked_shows})
+    shows = Show.objects.filter(showpick__user=request.user)
+    context = {
+        "shows":shows,
+    }
+    return render(request, 'members/user_pick.html', context)
