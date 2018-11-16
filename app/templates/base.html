@@ -7,6 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>전시관이 살아있다</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
     <script>
         window.fbAsyncInit = function () {
             FB.init({
@@ -32,7 +33,7 @@
 <body>
 <div id="wrap">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a href="" class="navbar-brand">전시관이 살아있다</a>
+        <a href="{% url 'shows:show-list' %}" class="navbar-brand">전시관이 살아있다</a>
         <ul class="navbar-nav ml-md-auto">
             {% if user.is_authenticated %}
                 <li class="nav-item mr-sm-1">
@@ -41,12 +42,12 @@
                         <button type="submit" class="btn btn-outline-primary">Logout</button>
                     </form>
                 </li>
+                <li class="nav-item mr-sm-1">
+                    <a href="{% url 'members:user-pick' %}" class="btn btn-outline-primary">내가 찜한 전시</a>
+                </li>
             {% else %}
                 <li class="nav-item mr-sm-1">
-                    <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
-                </li>
-                <li class="nav-item mr-sm-1">
-                    <a class="loginBtn loginBtn--google" href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a>
+                    <a href="{% url 'members:login-view' %}">Login</a>
                 </li>
             {% endif %}
         </ul>
