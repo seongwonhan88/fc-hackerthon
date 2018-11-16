@@ -31,9 +31,9 @@ def show_rating(request, rating_score):
 
 
 # comment 작성
-def comment_create(request, post_pk):
+def comment_create(request, show_pk):
     if request.method == 'POST':
-        show = Show.objects.get(pk=post_pk)
+        show = Show.objects.get(pk=show_pk)
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
