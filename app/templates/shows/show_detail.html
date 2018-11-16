@@ -17,7 +17,7 @@
                     <h4>기간</h4>
                     <p>{{ show.period }}</p>
                     <h4>티켓 구매하기</h4>
-                    <p>티켓링크 여기</p>
+                    <a href="{{ show.web_link }}">예매 페이지로 이동하기</a>
                     <!--찜하기-->
                     {% if user.is_authenticated %}
                         <form action="{% url 'shows:show_pick_toggle' show_pk=show.pk %}" method="POST">
