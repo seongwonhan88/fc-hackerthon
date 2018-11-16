@@ -1,72 +1,81 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div>
-    <div class="container">
-        <div class="row">
-            <h2>{{ show.title }}</h2>
-            <hr width = "100%" color = "orange" size = "3">
-        </div>
-        <div class="row">
-            <div class="col">
-                <img src="{{ show.thumbnail.url }}" >
+    <div>
+        <div class="container">
+            <div>
+                <h2>{{ show.title }}</h2>
+                <hr width="100%" color="orange" size="3">
             </div>
-            <div class="col">
-                <h3>장소</h3>
-                <p>{{ show.place }}</p>
-                <h3>기간</h3>
-                <p>{{ show.period }}</p>
-                <!--찜하기-->
-                {% if user.is_authenticated %}
-                <form action="{% url 'shows:show_pick_toggle' show_pk=show.pk %}" method="POST">
-                    {% csrf_token %}
-                    {% if user in show.pick_users.all %}
-                    <button class="btn btn-primary" type="submit">찜해제</button>
-                    {% else %}
-                    <button class="btn btn-primary" type="submit">찜</button>
+            <div class="row">
+                <div class="col">
+                    <img src="{{ show.thumbnail.url }}">
+                </div>
+                <div class="col">
+                    <h4>장소</h4>
+                    <p>{{ show.place }}</p>
+                    <h4>기간</h4>
+                    <p>{{ show.period }}</p>
+                    <h4>티켓 구매하기</h4>
+                    <p>티켓링크 여기</p>
+                    <!--찜하기-->
+                    {% if user.is_authenticated %}
+                        <form action="{% url 'shows:show_pick_toggle' show_pk=show.pk %}" method="POST">
+                            {% csrf_token %}
+                            {% if user in show.pick_users.all %}
+                                <button class="btn btn-outline-light bg-danger" type="submit">
+                                    <i class="fas fa-heart"></i>
+                                    찜해제
+                                </button>
+                            {% else %}
+                                <button class="btn btn-outline-light bg-danger" type="submit">
+                                    <i class="far fa-heart"></i>
+                                    찜
+                                </button>
+                            {% endif %}
+                        </form>
                     {% endif %}
-				</form>
-                {% endif %}
-                <!--찜하기 끝-->
+                    <!--찜하기 끝-->
+                </div>
+                <hr width="100%" color="orange" size="3">
             </div>
-            <hr width = "100%" color = "orange" size = "3">
-        </div>
-        <div class="row">
-            <img src="{{ show.poster.url }}" >
-            <hr width = "100%" color = "orange" size = "3">
-        </div>
-        <div class="card row" style="width: 100%;">
-          <div class="card-body">
-            <h5 class="card-title">상세 안내</h5>
-            <p class="card-text">{{ show.description }}</p>
-          </div>
-
-        </div>
-        <hr width = "100%" color = "orange" size = "3">
-
-        <div class="row">
+            <div>
+                <img src="{{ show.poster.url }}">
+                <hr width="100%" color="orange" size="3">
+            </div>
             <div class="card" style="width: 100%;">
-                <h3>댓글</h3>
-                <ul class="list-group list-group-flush">
-                    {% for comment in comments %}
-                    <li class="list-group-item"><strong>{{ comment.author }}</strong>: {{ comment.content }}</li>
-                    {% endfor %}
-                </ul>
+                <div class="card-body">
+                    <h5 class="card-title">상세 안내</h5>
+                    <p class="card-text">{{ show.description }}</p>
+                </div>
 
-            <!--댓글 작성-->
-            <li class="list-group-item">
-            {% if user.is_authenticated %}
-            <form action="{% url 'shows:comment_create' show_pk=show.pk %}" method="POST">
-                {% csrf_token %}
-                {{ comment_form.content }}
-                <textarea name="content" cols="30" rows="2" class="form-control"></textarea>
-                <button type="submit" class="btn btn-primary">작성</button>
-            </form>
-            {% endif %}
-            </li>
-        </div>
-            <hr width = "100%" color = "orange" size = "3">
+            </div>
+            <hr width="100%" color="orange" size="3">
+
+            <div>
+                <div>
+                    <h3>댓글</h3>
+                    <ul class="card-body">
+                        {% for comment in comments %}
+                            <li class="list-group-item">{{ comment.author }}: {{ comment.content }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                    <!--댓글 작성-->
+<h3>댓글작성</h3>
+
+                    {% if user.is_authenticated %}
+                        <form action="{% url 'shows:comment_create' show_pk=show.pk %}" method="POST">
+                            {% csrf_token %}
+                            {{ comment_form.content }}
+                            <textarea name="content" class="form-control" aria-label="With textarea"></textarea>
+                            <button type="submit" class="btn btn-outline-dark my-2 my-sm-0">작성</button>
+                        </form>
+                    {% endif %}
+                </div>
+                <hr width="100%" color="orange" size="3">
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
