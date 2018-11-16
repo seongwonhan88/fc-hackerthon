@@ -1,32 +1,32 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div>
-    <h2>전체 전시회 목록 보기</h2>
-    <ul class="list-group list-group-flush">
-        {% for show in shows %}
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col">
-                    <a href="{% url 'shows:show-detail' show_pk=show.pk %}">
-                        <img src="{{ show.thumbnail.url }}" style="width: 70px;">
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="{% url 'shows:show-detail' show_pk=show.pk %}" style="color: black;">
-                        <strong>{{ show.title }}</strong>
-                    </a>
-                </div>
-                <div class="col">
-                    {{ show.place }}
-                </div>
-                <div class="col">
-                    {{ show.period }}
-                </div>
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
-</div>
+    <div>
+        <h2 >전체 전시회 목록 보기</h2>
+        <div class="row">
+            {% for show in shows %}
 
+                <div class="col-4">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ show.thumbnail.url }}">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <a href="{% url 'shows:show-detail' show_pk=show.pk %}">
+                                    <h5 class="card-title">{{ show.title }}</h5>
+                                </a>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">전시관 : {{ show.place }}</li>
+                                <li class="list-group-item">전시기간: {{ show.period }}</li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <a href="{% url 'shows:show-detail' show_pk=show.pk %}" class="card-link">자세한 내용보기</a>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
