@@ -61,9 +61,10 @@
 ## Product Demo
 
 ### Site Demo  
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0Z6teoPhpfU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+
+https://www.youtube.com/embed/0Z6teoPhpfU  
 
 
 ### Crawling Demo  
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/IGP3VIPQIN4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+https://www.youtube.com/embed/IGP3VIPQIN4
